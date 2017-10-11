@@ -13,8 +13,9 @@
 (s/def ::dependent-spec (s/and ::annotated-list
                                size-matches?))
 
-(s/def ::annotated-list (s/cat :count nat-int?         ;; s/cat implies order
-                               :elements (s/* any?)))
+(s/def ::annotated-list (s/cat          ;; s/cat implies order
+                         :elements (s/* any?)
+                         :count nat-int?))
 
 (s/conform ::dependent-spec [3 "a" "b" "c"])
 ;; => {:count 3, :elements ["a" "b" "c"]}
@@ -46,7 +47,7 @@
   (let [conformed (s/conform ::dependent-spec coll)]
     (str "Size: " (:count conformed) ", elements: " (:elements conformed))))
 
-(do-something [3 "a" "b" "c"])
+(do-something ["a" "b" "c" 3])
 ;; => Size:  3 , elements:  [a b c]
 
 

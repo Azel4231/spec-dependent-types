@@ -3,10 +3,10 @@
 
 (defn size-matches? [coll]
   (= (count coll)
-     (inc (first coll))))
+     (inc (last coll))))
 
 (s/def ::dependent-spec (s/and sequential?
-                               #(nat-int? (first %))   ;; can be sure that it's a sequence
+                               #(nat-int? (last %))   ;; can be sure that it's a sequence
                                size-matches?))         ;; can be sure the first element is a number
 
 (s/valid? ::dependent-spec [5 "a" "b" "c" "d" "e"])
@@ -35,9 +35,10 @@
 (defn do-something [coll]
   (when (not (s/valid? ::dependent-spec coll))
     (throw (RuntimeException.)))
-  (let [[count & elements] coll]
+  (let [count (last coll)
+        elements (butlast coll)]
     (str "Size: " count ", elements: " elements)))
 
-(do-something [3 "a" "b" "c"])
+(do-something ["a" "b" "c" 3])
 ;; => Size:  3 , elements:  (a b c)
 
