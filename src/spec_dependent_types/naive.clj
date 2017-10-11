@@ -1,4 +1,4 @@
-(ns spec-depedent-types.naive
+(ns spec-dependent-types.naive
   (:require [clojure.spec.alpha :as s]))
 
 (defn size-matches? [coll]

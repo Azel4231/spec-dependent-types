@@ -1,4 +1,4 @@
-(ns spec-depedent-types.intro)
+(ns spec-dependent-types.intro)
 
 ;; "Can you model dependent types in clojure.spec?"
 

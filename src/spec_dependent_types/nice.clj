@@ -1,4 +1,4 @@
-(ns spec-depedent-types.nice
+(ns spec-dependent-types.nice
   (:require [clojure.spec.alpha :as s]))
 
 (defn size-matches? [m]

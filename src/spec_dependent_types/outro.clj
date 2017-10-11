@@ -1,4 +1,4 @@
-(ns spec-depedent-types.outro)
+(ns spec-dependent-types.outro)
 
 ;; Conclusion
 
